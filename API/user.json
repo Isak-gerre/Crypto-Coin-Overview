@@ -1,0 +1,12 @@
+{
+    "users" : {
+        "1" : {
+            "name": "Isak",
+            "username": "Isak22",
+            "age": "24",
+            "email": "Isak@gmail.com",
+            "password": "Isak111"
+        }
+    },
+    "highestID" : 1
+}
