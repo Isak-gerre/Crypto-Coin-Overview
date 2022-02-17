@@ -1,7 +1,6 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const { MongoClient } = require("mongodb");
-import { v4 as uuidv4 } from "uuid";
 import { credentials } from "../database_credentials.js";
 
 async function main() {
