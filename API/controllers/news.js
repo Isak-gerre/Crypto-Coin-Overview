@@ -22,16 +22,24 @@ export const getNews = async (req, res) => {
   const options = {
     method: "GET",
     url: "https://bing-news-search1.p.rapidapi.com/news/search",
-    params: { setLang: "EN", freshness: "Day", textFormat: "Raw", safeSearch: "Off" },
+    params: { count: "20", setLang: "EN", freshness: "Day", textFormat: "Raw", offset: "0", safeSearch: "Off" },
     headers: headersNews(),
   };
   if ("q" in req.query) {
     options.params.q = req.query.q;
   }
+  if ("setLang" in req.query) {
+    options.params.setLang = req.query.setLang;
+  }
+  if ("count" in req.query) {
+    options.params.count = req.query.count;
+  }
+  if ("offset" in req.query) {
+    options.params.offset = req.query.offset;
+  }
   axios
     .request(options)
     .then(function (response) {
-      console.log(response.data.coins);
       res.send(response.data);
     })
     .catch(function (error) {
