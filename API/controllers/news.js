@@ -1,7 +1,7 @@
 import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const { MongoClient } = require("mongodb");
-import { credentials } from "../database_credentials.js";
+import { credentials, headersNews } from "../database_credentials.js";
 const axios = require("axios");
 
 async function main() {
@@ -18,8 +18,23 @@ async function main() {
 }
 
 export const getNews = async (req, res) => {
-  const client = await main();
   console.log(req.query);
-
-  await client.close();
+  const options = {
+    method: "GET",
+    url: "https://bing-news-search1.p.rapidapi.com/news/search",
+    params: { setLang: "EN", freshness: "Day", textFormat: "Raw", safeSearch: "Off" },
+    headers: headersNews(),
+  };
+  if ("q" in req.query) {
+    options.params.q = req.query.q;
+  }
+  axios
+    .request(options)
+    .then(function (response) {
+      console.log(response.data.coins);
+      res.send(response.data);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 };
