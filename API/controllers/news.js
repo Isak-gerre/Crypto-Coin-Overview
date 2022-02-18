@@ -21,21 +21,18 @@ export const getNews = async (req, res) => {
   console.log(req.query);
   const options = {
     method: "GET",
-    url: "https://bing-news-search1.p.rapidapi.com/news/search",
-    params: { count: "20", setLang: "EN", freshness: "Day", textFormat: "Raw", offset: "0", safeSearch: "Off" },
+    url: "https://free-news.p.rapidapi.com/v1/search",
+    params: { q: "Crypto", lang: "en" },
     headers: headersNews(),
   };
   if ("q" in req.query) {
     options.params.q = req.query.q;
   }
-  if ("setLang" in req.query) {
-    options.params.setLang = req.query.setLang;
+  if ("page" in req.query) {
+    options.params.page = req.query.page;
   }
-  if ("count" in req.query) {
-    options.params.count = req.query.count;
-  }
-  if ("offset" in req.query) {
-    options.params.offset = req.query.offset;
+  if ("page_size" in req.query) {
+    options.params.page_size = req.query.page_size;
   }
   axios
     .request(options)
