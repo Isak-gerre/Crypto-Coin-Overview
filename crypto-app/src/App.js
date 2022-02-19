@@ -9,7 +9,7 @@ function App() {
     const fetchData = async () => {
       const result = await axios("http://localhost:8000/news?q=bitcoin");
       console.log(result.data);
-
+      //TODO - Sortera efter dag
       setData(result.data);
     };
 
@@ -18,8 +18,8 @@ function App() {
 
   return <div>
     {
-      data.articles.map((news) => {
-        return <NewsComponent news={news}></NewsComponent>
+      data.articles.map((news, index) => {
+        return <NewsComponent key={index} news={news}></NewsComponent>
       })
     }
   </div>;

@@ -3,3 +3,24 @@
   margin: 0;
   box-sizing: border-box;
 }
+.news_component {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20px;
+}
+.news_title {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+}
+.news_summary {
+}
+.news_image {
+  border-radius: 5px;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.news_link {
+  text-decoration: none;
+  color: black;
+}
