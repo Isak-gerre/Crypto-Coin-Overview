@@ -4636,7 +4636,7 @@ const CoinFeed = () => {
                   <th>Coin</th>
                   <th>Price</th>
                   <th>Change</th>
-                  <th>24hVolume</th>
+                  <th>24h Volume</th>
                   <th>Rank</th>
               </tr>
                 {
